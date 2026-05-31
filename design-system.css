@@ -1431,59 +1431,58 @@ textarea {
 /* ============================================================
    INPUT WITH INNER BUTTON (Button inside input field)
    ============================================================ */
+/* ============================================================
+   INPUT WITH INNER BUTTON (Button inside the input field)
+   ============================================================ */
 
-/* --- Wrapper for input + inner button --- */
-.input-with-btn {
+/* --- Wrapper: relative so button sits inside the input --- */
+.input-inner-wrap {
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
-/* --- Input with padding-right to make room for button --- */
-.input-with-btn .form-input {
-  padding-right: 5.5rem; /* space for button + gap */
+/* --- Input: extra padding-right so text doesn't overlap button --- */
+.input-inner-wrap .form-input {
+  padding-right: 4rem;
 }
 
-/* --- Inner button (positioned inside the input) --- */
+/* --- Button: positioned inside the input, right side --- */
 .input-inner-btn {
   position: absolute;
   right: 0.25rem;
   top: 0.25rem;
   bottom: 0.25rem;
-  padding: 0 var(--space-4);
+  width: 3rem;
   border-radius: var(--radius-md);
   border: none;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
   cursor: pointer;
   transition: all var(--transition-fast);
-  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 4rem;
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-500);
 }
 
-/* --- Disabled state (default) --- */
+/* --- Disabled --- */
 .input-inner-btn:disabled {
   background-color: var(--color-neutral-200);
   color: var(--color-neutral-500);
   cursor: not-allowed;
 }
 
-/* --- Active state (when input has enough characters) --- */
+/* --- Active --- */
 .input-inner-btn.is-active {
   background-color: var(--color-primary-600);
   color: var(--color-white);
 }
-.input-inner-btn.is-active:hover {
+.input-inner-btn.is-active:hover:not(:disabled) {
   background-color: var(--color-primary-700);
 }
 
-/* --- Loading state --- */
+/* --- Loading --- */
 .input-inner-btn.is-loading {
   color: transparent !important;
-  position: relative;
   pointer-events: none;
 }
 .input-inner-btn.is-loading::after {
@@ -1497,23 +1496,20 @@ textarea {
   animation: spin 0.6s linear infinite;
 }
 
-/* --- Success state --- */
+/* --- Success --- */
 .input-inner-btn.is-success {
   background-color: var(--color-success-600) !important;
   color: var(--color-white) !important;
 }
 
-/* --- Error state --- */
+/* --- Error --- */
 .input-inner-btn.is-error {
   background-color: var(--color-error-600) !important;
   color: var(--color-white) !important;
 }
 
-/* --- Spinner inside input (next to button) --- */
-.input-spinner-left {
-  position: absolute;
-  right: 5.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--color-primary-500);
+/* --- Spinner keyframe (if not already in your CSS) --- */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
