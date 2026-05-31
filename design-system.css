@@ -1429,23 +1429,22 @@ textarea {
   color: var(--color-primary-600);
 }
 /* ============================================================
-   INPUT WITH INNER BUTTON (Button inside input field)
-   ============================================================ */
-/* ============================================================
    INPUT WITH INNER BUTTON (Button inside the input field)
    ============================================================ */
 
-/* --- Wrapper: relative so button sits inside the input --- */
+/* --- Wrapper --- */
 .input-inner-wrap {
   position: relative;
+  display: block;
+  width: 100%;
 }
 
 /* --- Input: extra padding-right so text doesn't overlap button --- */
 .input-inner-wrap .form-input {
-  padding-right: 4rem;
+  padding-right: 4rem !important;
 }
 
-/* --- Button: positioned inside the input, right side --- */
+/* --- Button inside input, right side --- */
 .input-inner-btn {
   position: absolute;
   right: 0.25rem;
@@ -1506,10 +1505,4 @@ textarea {
 .input-inner-btn.is-error {
   background-color: var(--color-error-600) !important;
   color: var(--color-white) !important;
-}
-
-/* --- Spinner keyframe (if not already in your CSS) --- */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
