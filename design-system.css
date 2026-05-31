@@ -1506,3 +1506,233 @@ textarea {
   background-color: var(--color-error-600) !important;
   color: var(--color-white) !important;
 }
+/* ============================================================
+   25. TABLE COMPONENT
+   ============================================================ */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-base);
+  background-color: var(--color-white);
+}
+
+.table thead {
+  background-color: var(--color-neutral-50);
+  border-bottom: 2px solid var(--color-neutral-200);
+}
+
+.table th {
+  padding: 0.75rem var(--space-4);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 0.75rem var(--space-4);
+  color: var(--color-neutral-800);
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+
+.table tbody tr:hover {
+  background-color: var(--color-neutral-50);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Table variants */
+.table--striped tbody tr:nth-child(even) {
+  background-color: var(--color-neutral-50);
+}
+
+.table--compact th,
+.table--compact td {
+  padding: 0.5rem var(--space-3);
+}
+
+/* Status cell */
+.table .status-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.table .status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.status-dot--success { background-color: var(--color-success-500); }
+.status-dot--error { background-color: var(--color-error-500); }
+.status-dot--warning { background-color: var(--color-warning-500); }
+.status-dot--neutral { background-color: var(--color-neutral-400); }
+
+/* ============================================================
+   26. TABS COMPONENT
+   ============================================================ */
+
+.tabs {
+  display: flex;
+  border-bottom: 2px solid var(--color-neutral-200);
+  gap: 0;
+}
+
+.tab {
+  padding: 0.75rem var(--space-5);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-500);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--color-neutral-800);
+}
+
+.tab.is-active {
+  color: var(--color-primary-600);
+  border-bottom-color: var(--color-primary-600);
+}
+
+.tab .tab-badge {
+  margin-left: 0.5rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-500);
+}
+
+.tab.is-active .tab-badge {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-600);
+}
+
+/* ============================================================
+   27. BADGE COMPONENT
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.125rem 0.625rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.badge--neutral {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-700);
+}
+
+.badge--primary {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-700);
+}
+
+.badge--success {
+  background-color: var(--color-success-100);
+  color: var(--color-success-700);
+}
+
+.badge--error {
+  background-color: var(--color-error-100);
+  color: var(--color-error-700);
+}
+
+.badge--warning {
+  background-color: var(--color-warning-50);
+  color: var(--color-warning-700);
+}
+
+/* Badge as dot (no text) */
+.badge--dot {
+  width: 0.625rem;
+  height: 0.625rem;
+  padding: 0;
+  border-radius: var(--radius-full);
+}
+
+/* ============================================================
+   28. TOGGLE / SWITCH COMPONENT
+   ============================================================ */
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-track {
+  position: relative;
+  width: 2.75rem;
+  height: 1.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-neutral-300);
+  transition: background-color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 0.125rem;
+  left: 0.125rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast);
+}
+
+.toggle input:checked + .toggle-track {
+  background-color: var(--color-primary-600);
+}
+
+.toggle input:checked + .toggle-track::after {
+  transform: translateX(1.25rem);
+}
+
+.toggle input:disabled + .toggle-track {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggle-label {
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-700);
+   }
