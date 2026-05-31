@@ -1428,3 +1428,92 @@ textarea {
 .info-btn:hover {
   color: var(--color-primary-600);
 }
+/* ============================================================
+   INPUT WITH INNER BUTTON (Button inside input field)
+   ============================================================ */
+
+/* --- Wrapper for input + inner button --- */
+.input-with-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* --- Input with padding-right to make room for button --- */
+.input-with-btn .form-input {
+  padding-right: 5.5rem; /* space for button + gap */
+}
+
+/* --- Inner button (positioned inside the input) --- */
+.input-inner-btn {
+  position: absolute;
+  right: 0.25rem;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  border: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4rem;
+}
+
+/* --- Disabled state (default) --- */
+.input-inner-btn:disabled {
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-500);
+  cursor: not-allowed;
+}
+
+/* --- Active state (when input has enough characters) --- */
+.input-inner-btn.is-active {
+  background-color: var(--color-primary-600);
+  color: var(--color-white);
+}
+.input-inner-btn.is-active:hover {
+  background-color: var(--color-primary-700);
+}
+
+/* --- Loading state --- */
+.input-inner-btn.is-loading {
+  color: transparent !important;
+  position: relative;
+  pointer-events: none;
+}
+.input-inner-btn.is-loading::after {
+  content: '';
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--color-white);
+  border-right-color: transparent;
+  border-radius: var(--radius-full);
+  animation: spin 0.6s linear infinite;
+}
+
+/* --- Success state --- */
+.input-inner-btn.is-success {
+  background-color: var(--color-success-600) !important;
+  color: var(--color-white) !important;
+}
+
+/* --- Error state --- */
+.input-inner-btn.is-error {
+  background-color: var(--color-error-600) !important;
+  color: var(--color-white) !important;
+}
+
+/* --- Spinner inside input (next to button) --- */
+.input-spinner-left {
+  position: absolute;
+  right: 5.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary-500);
+}
